@@ -1,0 +1,6 @@
+yntax: glob
+.gaedata
+*~
+*.pyc
+*.pyo
+.DS_Store

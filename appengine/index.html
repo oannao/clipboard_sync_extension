@@ -1,0 +1,91 @@
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+  <title>Clipboard Sync</title>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Clipboard Sync</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav pull-right">
+            <li>
+              <div class="navbar-search pull-left">
+                <i class="icon-search icon-white"></i>
+                <input type="text" class="search-query" id="search-word" placeholder="Search">
+              </div>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+              <a><i class="icon-user icon-white"></i>
+                {{user_id}}
+              </a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li class="active">
+              <a href={{ url }}>{{ url_linktext }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span12" id="main">
+        <section id="clipboard">
+          <div class="page-header">
+            <h1>Clipboard</h1>
+            <div class="pull-right">
+              <span>履歴数: </span>
+              <select class="span1" id="line">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <table class="table table-striped"><thead><tr><th class="span12">Content</th><th>Date</th><th>Time</th><th></th><th></th></tr></thead>
+              <tbody id="clip-timeline"></tbody></table>
+          </div>
+          <div>
+            <span id="user-id" style="display:none">{{ user_id }}</span>
+            <span id="channel-token" style="display:none">{{ channel_token }}</span>
+          </div>
+          <div>
+          {% if user_id == "guest" %}
+          <div class="front-card">
+            <div class="alert alert-info">
+              <h3><a href={{ url }}>Login</a>してください！！</h3>
+              <p>Loginしないと使え(ヾﾉ･∀･`)ﾅｲﾅｲ</p>
+              <p>☆（ゝω・）vｷｬﾋﾟ</p>
+            </div>
+          </div>
+          {% endif %}
+          {% if developer_mode %}        
+          <div class="control-group">
+            <div class="controls">
+              <button class="btn btn-small" id="flush-all">Clear</button>
+              <button class="btn btn-small" id="channel">Channel</button>
+            </div>
+          </div>
+          {% endif %}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="/_ah/channel/jsapi"></script>
+  <script src="js/jquery-1.8.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/aes.js"></script>
+  <script src="js/sha1.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

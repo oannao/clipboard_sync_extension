@@ -1,0 +1,28 @@
+application: kktn-anna
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /img
+  static_dir: img
+
+- url: /rpc.*
+  script: handler.app2
+
+- url: /.*
+  script: handler.app
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: jinja2
+  version: latest
